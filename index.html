@@ -21,28 +21,31 @@
     <img src="dachshund.gif" width="250" />
   `;
  }
-
-let hoverCount = 0;
+let attemptCount = 0;
 
 const noBtn = document.getElementById("no");
 
-noBtn.onmouseover = () => {
-  // move the button randomly
-  noBtn.style.left = Math.random() * 300 - 150 + "px";
-  noBtn.style.top = Math.random() * 200 - 100 + "px";
+function moveButton() {
+  const maxX = window.innerWidth - 120;
+  const maxY = window.innerHeight - 60;
 
-  // count the attempts
-  hoverCount++;
+  noBtn.style.position = "absolute";
+  noBtn.style.left = Math.random() * maxX + "px";
+  noBtn.style.top = Math.random() * maxY + "px";
 
-  if (hoverCount >= 5) {
+  attemptCount++;
+
+  if (attemptCount >= 5) {
     document.body.innerHTML = `
-      <h1> nice try </h1>
-      <img src="sad.gif" width="250" />
-      <p>pick the right answer</p>
+      <h1>HAHA nice try 😈</h1>
+      <p>You tried to hit "No" 5 times...</p>
+      <img src="caught.gif" width="250" />
+      <p>Just press YES already ❤️⚓</p>
     `;
   }
-};
+}
 
+noBtn.addEventListener("pointerdown", moveButton);
 
     </script>
   </body>
